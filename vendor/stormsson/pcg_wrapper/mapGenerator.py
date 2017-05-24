@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import division
-from procedural_city_generation.roadmap.config import config
 from copy import copy
+import matplotlib.pyplot as plt
+
+from procedural_city_generation.roadmap.config import config
 from procedural_city_generation.roadmap.iteration import iteration
 from procedural_city_generation.additional_stuff.pickletools import save_vertexlist
-import matplotlib.pyplot as plt
+
 
 gui=None
 
