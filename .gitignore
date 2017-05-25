@@ -1,1 +1,5 @@
 *.pyc
+temp/*
+!temp/.gitkeep
+outputs/*
+!outputs/.gitkeep
