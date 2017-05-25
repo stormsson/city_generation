@@ -17,6 +17,15 @@ class RoadMapGenerator():
         self.temp_dir_path = temp_dir_path
 
     def generateRoadMap(self, rule_image_path, density_image_path, seed=False, plotMap=False, plotVertexes=False):
+        """ Generate a roadmap and returns a vertex list
+            Params:
+                rule_image_path: (string) image path that rules how the city growth is executed
+                density_image_path: (string) image path that defines the population density
+                seed: (integer) seed to use for random generation
+                plotMap (bool): show the map?
+                plotVertexes (bool): show the single vertexes?
+
+        """
         configurationInstance = ConfigurationInstance(seed, self.input_dir_path, self.temp_dir_path)
         self.singleton = configurationInstance.getRoadmapSingleton(rule_image_path, density_image_path)
 
@@ -63,7 +72,7 @@ class RoadMapGenerator():
                 })
 
 
-        if plotVertexes:
+        if plotMap and plotVertexes:
             plt.plot(
                 [v['coords'][0] for v in vertexes],
                 [v['coords'][1] for v in vertexes],
