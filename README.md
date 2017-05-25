@@ -16,7 +16,7 @@ Inside vendor/josauder directory there is the main library that actually generat
 ### vendor/stormsson/pcg_wrapper
 When possible or necessary the original code has been mantained untouched and an equivalent code has been created inside vendor/stormsson/pcg_wrapper.
 
-## How to use the wrapper
+## Quickstart
 Simply check exampleRoadmapGeneration.py: the steps are quite simple
 
 1) include vendor dir to sys.path
