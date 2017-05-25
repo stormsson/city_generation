@@ -144,7 +144,7 @@ class ConfigurationInstance():
 
 
         if name == "random":
-            print("New random heightmap is being created with randommap.py")
+            #print("New random heightmap is being created with randommap.py")
             #Writes correct inuse.txt
 
             randommap.main(self.singleton.border, self.temp_dir_path)

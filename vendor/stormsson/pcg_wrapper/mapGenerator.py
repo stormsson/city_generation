@@ -68,7 +68,7 @@ class RoadMapGenerator():
                 [v['coords'][0] for v in vertexes],
                 [v['coords'][1] for v in vertexes],
                 'o', color="red")
-        print("Roadmap is complete!")
+        # print("Roadmap is complete!")
 
         if plotMap:
             plt.show()

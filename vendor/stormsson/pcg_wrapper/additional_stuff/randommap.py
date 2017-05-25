@@ -135,5 +135,5 @@ def main(border, temp_path):
 
     with open(temp_path+"/randommap_"+str(border[0])+"_"+str(border[1]), "w") as f:
         f.write(pickle.dumps([points.tolist(), triangles.tolist()]))
-    print("New random heightmap generated. If you wish to use an existing one, change the corresponding variable heightmap_name in roadmap.conf")
+    # print("New random heightmap generated. If you wish to use an existing one, change the corresponding variable heightmap_name in roadmap.conf")
     return 0
