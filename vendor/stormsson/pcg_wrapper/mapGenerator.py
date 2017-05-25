@@ -9,7 +9,6 @@ from procedural_city_generation.roadmap.getSuggestion import getSuggestion
 from procedural_city_generation.roadmap.check import check
 from procedural_city_generation.additional_stuff.pickletools import save_vertexlist
 
-
 gui=None
 
 class RoadMapGenerator():
@@ -18,7 +17,6 @@ class RoadMapGenerator():
         self.temp_dir_path = temp_dir_path
 
     def generateRoadMap(self, rule_image_path, density_image_path, seed=False, plotMap=False, plotVertexes=False):
-
         configurationInstance = ConfigurationInstance(seed, self.input_dir_path, self.temp_dir_path)
         self.singleton = configurationInstance.getRoadmapSingleton(rule_image_path, density_image_path)
 
@@ -46,7 +44,7 @@ class RoadMapGenerator():
 
             if plotMap == 1:
                 if i%self.singleton.plot_counter == 0:
-                        plt.pause(0.001)
+                        # plt.pause(0.001)
                         try:
                             fig.canvas.blit(ax.bbox)
                             fig.canvas.flush_events()

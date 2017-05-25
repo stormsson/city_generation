@@ -23,25 +23,19 @@ def randommap(rows, cols):
 
     def fillarray(y, x):
         '''Fills row:x col:y of the array to be filled out'''
-        try:
-            if x!=0 and y!=0:
-                arr[x][y]=(semirand(arr[x-1][y])+arr[x-1][y-1]+arr[x][y-1])/3
 
-            elif x == 0 and y!=0:
+        if x!=0 and y!=0:
+            arr[x][y]=(semirand(arr[x-1][y])+arr[x-1][y-1]+arr[x][y-1])/3
 
-                arr[x][y]=semirand(arr[0][y-1])
+        elif x == 0 and y!=0:
 
-            elif y == 0 and x!=0:
-                arr[x][y]=semirand(arr[x-1][0])
+            arr[x][y]=semirand(arr[0][y-1])
 
-            elif (x+y) == 0:
-                arr[0][0]=-0.1
-        except IndexError as e:
-            print("ERRORE: ",x,y)
-            pass
-            # raise e
+        elif y == 0 and x!=0:
+            arr[x][y]=semirand(arr[x-1][0])
 
-
+        elif (x+y) == 0:
+            arr[0][0]=-0.1
 
     for i in xrange(cols):
         for k in xrange(rows):

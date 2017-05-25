@@ -2,20 +2,16 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division
-import matplotlib.image as mpimg
-import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 import os
-import json
+import random
 from collections import namedtuple
 import procedural_city_generation
-# from procedural_city_generation.additional_stuff.Singleton import Singleton
 
 from procedural_city_generation.roadmap.Vertex import Vertex, set_plotbool
 
 from procedural_city_generation.roadmap.config_functions.find_radial_centers import find_radial_centers
-from procedural_city_generation.roadmap.config_functions.setup_heightmap import setup_heightmap
 from scipy.spatial import cKDTree
 
 from pcg_wrapper.config_functions.input_image_setup import ImageSetup
@@ -31,7 +27,8 @@ class Global_Lists:
 class ConfigurationInstance():
     def __init__(self, seed, input_dir_path, temp_dir_path ):
 
-        if(seed)
+        if(seed):
+            random.seed(seed)
             np.random.seed(seed)
 
         if not os.path.isdir(input_dir_path):

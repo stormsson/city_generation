@@ -22,7 +22,8 @@ density_image_path = input_path+"/density_pictures/stubs_density.png"
 vertexes = g.generateRoadMap(
     rule_image_path,
     density_image_path,
-    plotMap=True,plotVertexes=True
+    # seed=123,
+    plotMap=True,plotVertexes=False
     )
 print(len(vertexes))
 
