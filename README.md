@@ -10,11 +10,20 @@ To make it easier to refactor and create the wrapper **the original sources incl
 
 ## Content
 
+### inputs, outputs,temp directories
+The main library relies on certain folders to be present to read data.
+In a first step to detach the file structure from the logical structure these folder are moved (copied, actually) from the original library file structure, to a more accessible folder.
+
+In the future, if the project proceeds, the objective is to render the directory structure not mandatory.
+
+
 ### vendor/josauder
 Inside vendor/josauder directory there is the main library that actually generate the city, but some of the sources have been altered.
 
 ### vendor/stormsson/pcg_wrapper
 When possible or necessary the original code has been mantained untouched and an equivalent code has been created inside vendor/stormsson/pcg_wrapper.
+
+
 
 ## Quickstart
 Simply check exampleRoadmapGeneration.py: the steps are quite simple
