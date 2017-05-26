@@ -15,19 +15,27 @@ class RoadMapGenerator():
     def __init__(self, input_dir_path, temp_dir_path):
         self.input_dir_path = input_dir_path
         self.temp_dir_path = temp_dir_path
+        self.configurationInstance = ConfigurationInstance(self.input_dir_path, self.temp_dir_path)
+
+    def getConfigurationInstance(self):
+        return self.configurationInstance
 
     def generateRoadMap(self, rule_image_path, density_image_path, seed=False, plotMap=False, plotVertexes=False):
         """ Generate a roadmap and returns a vertex list
             Params:
-                rule_image_path: (string) image path that rules how the city growth is executed
-                density_image_path: (string) image path that defines the population density
-                seed: (integer) seed to use for random generation
-                plotMap (bool): show the map?
-                plotVertexes (bool): show the single vertexes?
+                rule_image_path     (string)   image path that rules how the city growth is executed
+                density_image_path  (string)   image path that defines the population density
+                seed                (integer)  seed to use for random generation
+                plotMap             (bool)     show the map?
+                plotVertexes        (bool)     show the single vertexes?
+            Returns:
+                vertex list  (list)
 
         """
-        configurationInstance = ConfigurationInstance(seed, self.input_dir_path, self.temp_dir_path)
-        self.singleton = configurationInstance.getRoadmapSingleton(rule_image_path, density_image_path)
+
+        self.configurationInstance.setSeed(seed)
+
+        self.singleton = self.configurationInstance.getRoadmapSingleton(rule_image_path, density_image_path)
 
         front=copy(self.singleton.global_lists.vertex_list)
         front.pop(0)
@@ -49,7 +57,7 @@ class RoadMapGenerator():
         i=0
         while (front!=[] or self.singleton.global_lists.vertex_queue    !=[]):
             i+=1
-            front=self.iteration(front)
+            front=self._iteration(front)
 
             if plotMap == 1:
                 if i%self.singleton.plot_counter == 0:
@@ -84,7 +92,7 @@ class RoadMapGenerator():
 
         return vertexes
 
-    def iteration(self, front):
+    def _iteration(self, front):
         """
         Gets Called in the mainloop.
         Manages the front and newfront and the queue

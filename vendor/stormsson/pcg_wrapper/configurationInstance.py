@@ -24,12 +24,11 @@ class Global_Lists:
         self.vertex_queue=[]
         self.tree=None
 
-class ConfigurationInstance():
-    def __init__(self, seed, input_dir_path, temp_dir_path ):
 
-        if(seed):
-            random.seed(seed)
-            np.random.seed(seed)
+class ConfigurationInstance():
+    def __init__(self, input_dir_path, temp_dir_path, seed=False ):
+        self.seed = seed if seed else random.randint(0, 10e9)
+        self.setSeed(self.seed)
 
         if not os.path.isdir(input_dir_path):
             raise  IOError("Input directory {0} not found".format(input_dir_path))
@@ -41,7 +40,16 @@ class ConfigurationInstance():
         self.input_dir_path = input_dir_path
         self.temp_dir_path = temp_dir_path
 
-    def getRoadmapSingleton(self, rule_image_path, density_image_path ):
+    def getSeed(self):
+        return self.seed
+
+    def setSeed(self, seed):
+        self.seed = seed
+        random.seed(seed)
+        np.random.seed(seed)
+
+
+    def getRoadmapSingleton(self, rule_image_path, density_image_path, heightmap_image_path=False):
         """
         Starts the program up with all necessary things. Reads the inputs,
         creates the Singleton objects properly, sets up the heightmap for later,
@@ -96,8 +104,14 @@ class ConfigurationInstance():
         self.singleton.center= [np.array([self.singleton.border[0]*((x[1]/self.singleton.img.shape[1])-0.5)*2, self.singleton.border[1]*(((self.singleton.img.shape[0]-x[0])/self.singleton.img.shape[0])-0.5)*2]) for x in self.singleton.center]
 
 
-        heightmap_name = "random"
-        self.setup_heightmap(heightmap_name)
+        # TODO: allow non random heightmap.
+        # non-random heightmaps are at the moment untested
+
+        if heightmap_image_path == False:
+            heightmap_image_path = "random"
+
+        # TODO: check if this is actually needed
+        # self._setup_heightmap(heightmap_image_path)
 
 
         self.singleton.global_lists=Global_Lists()
@@ -129,7 +143,7 @@ class ConfigurationInstance():
 
         return self.singleton
 
-    def setup_heightmap(self, name):
+    def _setup_heightmap(self, name):
         #TODO: Document
         '''Sets up the heightmap image from roadmap.conf entry heightmap_name, writes ./Heightmaps/inuse.txt so other functions know which heightmap to load
         possible inputs:

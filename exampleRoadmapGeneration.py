@@ -30,4 +30,4 @@ vertexes = g.generateRoadMap(
     plotMap=True,plotVertexes=False
     )
 print("Map contains {0} vertexes".format(len(vertexes)))
-print(vertexes[0])
+print("Map generated with seed {0}".format(g.getConfigurationInstance().getSeed()))

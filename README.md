@@ -24,6 +24,10 @@ Inside vendor/josauder directory there is the main library that actually generat
 When possible or necessary the original code has been mantained untouched and an equivalent code has been created inside vendor/stormsson/pcg_wrapper.
 
 
+## Installation
+Just install requirements:
+
+    pip install -r requirements.txt
 
 ## Quickstart
 Simply check exampleRoadmapGeneration.py: the steps are quite simple
@@ -38,14 +42,15 @@ Simply check exampleRoadmapGeneration.py: the steps are quite simple
 
     from pcg_wrapper.roadMapGenerator import RoadMapGenerator
 
-3) the generator instance needs 2 folder path: input and temp dir to make the original library work correctly.
+3) the generator instance needs 2 folder path: input and temp dir to make the original library work correctly (hopefully this will be removed in the future).
 
     g = RoadMapGenerator(input_path, temp_path)
 
 4) to generate the map the generator needs the path to a rgb image that defines the rules on how to grow the city and the path a b/w image that defines the population density.
+
 See [here](http://josauder.github.io/procedural_city_generation) for further informations.
 
-Furtherly you can pass a **seed** parameter to generate the same map.
+Furthermore you can pass an integer **seed** parameter to generate the same map.
 
     vertexes = g.generateRoadMap(
         rule_image_path,
