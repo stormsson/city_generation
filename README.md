@@ -34,17 +34,19 @@ Simply check exampleRoadmapGeneration.py: the steps are quite simple
 
 1) include vendor dir to sys.path
 
-    vendor_path = os.path.dirname(os.path.abspath(__file__))+"/vendor"
-    vendors = [ vendor_path+"/"+f for f in os.listdir(vendor_path) if os.path.isdir(vendor_path+"/"+f)]
-    sys.path += vendors
+
+        vendor_path = os.path.dirname(os.path.abspath(__file__))+"/vendor"
+        vendors = [ vendor_path+"/"+f for f in os.listdir(vendor_path) if os.path.isdir(vendor_path+"/"+f)]
+        sys.path += vendors
+
 
 2) import the roadmap generator
 
-    from pcg_wrapper.roadMapGenerator import RoadMapGenerator
+        from pcg_wrapper.roadMapGenerator import RoadMapGenerator
 
 3) the generator instance needs 2 folder path: input and temp dir to make the original library work correctly (hopefully this will be removed in the future).
 
-    g = RoadMapGenerator(input_path, temp_path)
+        g = RoadMapGenerator(input_path, temp_path)
 
 4) to generate the map the generator needs the path to a rgb image that defines the rules on how to grow the city and the path a b/w image that defines the population density.
 
